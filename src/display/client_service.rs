@@ -38,6 +38,19 @@ pub fn excluir_cliente(clientes: &mut Vec<Cliente>){
     if clientes_esta_vazio(clientes) {
         return;
     }
+
+    println!("Id do Cliente: ");
+    let id = ler_dados_int();
+    
+    let old_cliente = clientes.iter().enumerate().find(| (_, cliente) | cliente.id == id);
+
+    if let Some((index, cliente)) = old_cliente {
+        mostrar_cliente(cliente);
+        clientes.remove(index);
+    }
+
+    println!("Cliente Deletado");
+    esperar(1);
 }
 
 pub fn listar_clientes(clientes: &mut Vec<Cliente>){
